@@ -1,0 +1,23 @@
+# Local profiles (keep sample version tracked)
+config/profiles.json
+
+# Logs & Temporary Files
+*.log
+.tmp/
+*.tmp
+
+# Snapshots & Local Backups
+backups/
+snapshot-*/
+
+# Local credentials & caches
+apollo_credentials.txt
+*.pfx
+*.cer
+*.key
+
+# Windows system artifacts
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/

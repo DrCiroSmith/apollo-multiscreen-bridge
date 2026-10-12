@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "description": "Declarative profile configuration for multi-instance Sunshine/Apollo bridge",
+  "general": {
+    "sunshine_dir": "C:\\Program Files\\Apollo",
+    "sunshine_bin": "sunshine.exe",
+    "backup_dir": "C:\\Program Files\\Apollo\\backups",
+    "stagger_delay_ms": 1500
+  },
+  "profiles": [
+    {
+      "id": "ipad-wired",
+      "name": "Apollo-iPad Wired",
+      "config_dir": "config",
+      "port_base": 47989,
+      "webui_port": 47990,
+      "display": {
+        "output_name": "\\\\.\\DISPLAY20",
+        "resolution": "1920x1440",
+        "refresh_rate": 120,
+        "virtual_display": true,
+        "double_refreshrate": false
+      },
+      "network": {
+        "interface_alias": "Ethernet 4",
+        "priority_metric": 5,
+        "enforce_wired_only": true,
+        "block_on_interfaces": ["Wi-Fi"]
+      },
+      "role": "Desk docked direct USB-C/Cat8 connection with zero latency"
+    },
+    {
+      "id": "imac-direct",
+      "name": "Apollo-iMac",
+      "config_dir": "config2",
+      "port_base": 48089,
+      "webui_port": 48090,
+      "display": {
+        "output_name": "\\\\.\\DISPLAY21",
+        "resolution": "5120x2880",
+        "refresh_rate": 60,
+        "virtual_display": true,
+        "double_refreshrate": false
+      },
+      "network": {
+        "interface_alias": "Ethernet",
+        "priority_metric": 20,
+        "enforce_wired_only": false,
+        "block_on_interfaces": []
+      },
+      "role": "Secondary 5K desktop screen over dedicated direct RJ45"
+    },
+    {
+      "id": "ipad-roam",
+      "name": "Apollo-iPad Roam",
+      "config_dir": "config3",
+      "port_base": 48189,
+      "webui_port": 48190,
+      "display": {
+        "output_name": "\\\\.\\DISPLAY20",
+        "resolution": "1920x1440",
+        "refresh_rate": 120,
+        "virtual_display": true,
+        "double_refreshrate": false
+      },
+      "network": {
+        "interface_alias": "Wi-Fi",
+        "priority_metric": 30,
+        "enforce_wired_only": false,
+        "block_on_interfaces": []
+      },
+      "role": "Wireless fallback for roaming over Wi-Fi and Tailscale"
+    }
+  ]
+}
