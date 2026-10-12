@@ -54,8 +54,8 @@ flowchart TD
     end
 
     subgraph Networks["Network Routing & Isolation"]
-        N1["Direct USB-C / Cat 8 (192.168.3.x)<br/>Interface Metric: 5 (Priority)"]
-        N2["Direct RJ45 (192.168.2.x)<br/>Interface Metric: 20"]
+        N1["Direct USB-C / Cat 8 (192.168.100.x)<br/>Interface Metric: 5 (Priority)"]
+        N2["Direct RJ45 (192.168.200.x)<br/>Interface Metric: 20"]
         N3["Wi-Fi / Tailscale (192.168.1.x / 100.x)<br/>Interface Metric: 30 (Fallback)"]
     end
 
@@ -128,7 +128,7 @@ Edit `config/profiles.json` to suit your monitor setup and network interfaces:
         "virtual_display": true
       },
       "network": {
-        "interface_alias": "Ethernet 4",
+        "interface_alias": "Ethernet 2",
         "priority_metric": 5,
         "enforce_wired_only": true,
         "block_on_interfaces": ["Wi-Fi"]
@@ -174,13 +174,13 @@ Edit `config/profiles.json` to suit your monitor setup and network interfaces:
 
 1. **iPad Wired**:
    - In Moonlight on iPad, tap **Add Host Manually**.
-   - Enter your direct cable IP (e.g., `192.168.3.1`).
+   - Enter your direct cable IP (e.g., `192.168.100.1`).
    - Open WebUI at `https://127.0.0.1:47990/pin` on the host to approve the pairing PIN.
 2. **iMac Direct**:
-   - In Moonlight on iMac, enter the direct IP (e.g., `192.168.2.1`).
+   - In Moonlight on iMac, enter the direct IP (e.g., `192.168.200.1`).
    - Open WebUI at `https://127.0.0.1:48090/pin` to approve the PIN.
 3. **iPad Roaming**:
-   - In Moonlight on iPad, enter your Wi-Fi or Tailscale IP (e.g., `192.168.1.68` or `100.x.y.z`).
+   - In Moonlight on iPad, enter your Wi-Fi or Tailscale IP (e.g., `192.168.1.50` or `100.x.y.z`).
    - Open WebUI at `https://127.0.0.1:48190/pin` to approve the PIN.
 
 ---

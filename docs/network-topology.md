@@ -19,7 +19,7 @@ Modern high-refresh, ultra-high-resolution streaming (e.g., 5K 60Hz and 1920x144
 +---------------------------------------------------------------------------------------+
             |                                  |                            |
     (Direct Cat 8 / USB-C)             (Direct Cat 8 RJ45)           (Wi-Fi / Tailscale)
-   Subnet: 192.168.3.0/24             Subnet: 192.168.2.0/24         Subnet: 192.168.1.0/24
+   Subnet: 192.168.100.0/24           Subnet: 192.168.200.0/24       Subnet: 192.168.1.0/24
     Metric: 5 (High Priority)          Metric: 20                   Metric: 30 (Fallback)
             |                                  |                            |
             v                                  v                            v
@@ -38,11 +38,11 @@ When a client device (such as an iPad) has both Wi-Fi enabled and a direct USB-C
 
 ### The Solution: Interface Metric 5
 Windows evaluates routes using metric costs. Lower metric numbers mean higher priority.
-- By setting the host's direct Ethernet interface (`Ethernet 4`) to **InterfaceMetric 5**:
+- By setting the host's direct Ethernet interface (`Ethernet 2`) to **InterfaceMetric 5**:
   ```powershell
-  Set-NetIPInterface -InterfaceAlias "Ethernet 4" -InterfaceMetric 5
+  Set-NetIPInterface -InterfaceAlias "Ethernet 2" -InterfaceMetric 5
   ```
-- Windows guarantees that any traffic directed towards the 192.168.3.x subnet flows exclusively through the direct 1Gbps / 2.5Gbps cable.
+- Windows guarantees that any traffic directed towards the 192.168.100.x subnet flows exclusively through the direct 1Gbps / 2.5Gbps cable.
 - The supervisor script (`launch_and_heal.ps1`) enforces this metric on every launch to defend against Windows network reset events.
 
 ---
@@ -64,8 +64,8 @@ Each instance configured by `apollo-multiscreen-bridge` is provisioned with:
 - A dedicated port offset ($P_1 = 47989, P_2 = 48089, P_3 = 48189$).
 
 In the client's Moonlight UI, they appear as three separate, dedicated tiles:
-- **`Apollo-iPad Wired`**: Connects directly via 192.168.3.1.
-- **`Apollo-iMac`**: Connects directly via 192.168.2.1.
+- **`Apollo-iPad Wired`**: Connects directly via 192.168.100.1.
+- **`Apollo-iMac`**: Connects directly via 192.168.200.1.
 - **`Apollo-iPad Roam`**: Connects via Wi-Fi (192.168.1.x) or Tailscale (100.x.y.z).
 
 ---
@@ -89,5 +89,5 @@ For any base port $P$:
 ## 5. Automated Windows Firewall Isolation
 
 To prevent the wired profile from broadcasting over the household Wi-Fi network, `bootstrap.ps1` injects Windows Firewall interface-scoped rules:
-- **Instance 1 (Wired Exclusive)**: Ports `47989`, `47990`, `47998-48010` are blocked on the `Wi-Fi` adapter interface. Traffic is only permitted across `Ethernet 4`.
+- **Instance 1 (Wired Exclusive)**: Ports `47989`, `47990`, `47998-48010` are blocked on the `Wi-Fi` adapter interface. Traffic is only permitted across `Ethernet 2`.
 - **Instance 2 & 3**: Ports are open across all adapters with standard inbound allow policies.

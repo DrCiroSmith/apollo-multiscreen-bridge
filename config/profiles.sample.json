@@ -23,7 +23,7 @@
         "double_refreshrate": false
       },
       "network": {
-        "interface_alias": "Ethernet 4",
+        "interface_alias": "Ethernet 2",
         "priority_metric": 5,
         "enforce_wired_only": true,
         "block_on_interfaces": ["Wi-Fi"]
