@@ -36,14 +36,23 @@ When a client device (such as an iPad) has both Wi-Fi enabled and a direct USB-C
 2. If packets route through the home Wi-Fi access point, round-trip latency spikes from **0.2ms** to **8-15ms**, and frames drop during bursts.
 3. Turning off Wi-Fi on the client device every time it docks is cumbersome and breaks AirDrop, Apple Pencil handoff, and notifications.
 
-### The Solution: Interface Metric 5
+### The Solution: Link-Aware Sensing, Route Precedence & Roam Gating
 Windows evaluates routes using metric costs. Lower metric numbers mean higher priority.
-- By setting the host's direct Ethernet interface (`Ethernet 2`) to **InterfaceMetric 5**:
-  ```powershell
-  Set-NetIPInterface -InterfaceAlias "Ethernet 2" -InterfaceMetric 5
-  ```
-- Windows guarantees that any traffic directed towards the 192.168.100.x subnet flows exclusively through the direct 1Gbps / 2.5Gbps cable.
-- The supervisor script (`launch_and_heal.ps1`) enforces this metric on every launch to defend against Windows network reset events.
+1. **Dynamic Interface Metrics:**
+   - When the direct link adapter (`Ethernet 2` / `Ethernet 4`) is detected **Up**, `launch_and_heal.ps1` sets its metric to **2** (highest priority) and deprioritizes `Wi-Fi` to **50**:
+     ```powershell
+     Set-NetIPInterface -InterfaceAlias "Ethernet 2" -InterfaceMetric 2
+     Set-NetIPInterface -InterfaceAlias "Wi-Fi" -InterfaceMetric 50
+     ```
+2. **Subnet Route Precedence:**
+   - Enforces `RouteMetric 1` for the direct link subnet (e.g. `192.168.100.0/24`), ensuring packets strictly exit the wired NIC:
+     ```powershell
+     Set-NetRoute -DestinationPrefix "192.168.100.0/24" -InterfaceAlias "Ethernet 2" -RouteMetric 1
+     ```
+3. **Dynamic Roam Instance Gating (Firewall Hold):**
+   - While the direct cable has carrier/link up, an inbound firewall rule dynamically blocks Roam ports (`48184`, `48189`, `48190`, `48210` TCP / `48198-48210` UDP) on the `Wi-Fi` interface.
+   - Moonlight on the iPad sees `Apollo-iPad Roam` as offline while docked, forcing traffic over `Apollo-iPad Wired` (47989) with 0ms latency.
+   - When undocked, the gating rule drops and Wi-Fi metric restores to 30, seamlessly opening wireless roaming.
 
 ---
 
