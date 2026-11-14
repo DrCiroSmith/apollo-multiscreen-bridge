@@ -1,0 +1,33 @@
+name: Apollo Bridge CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python test tools
+        run: |
+          pip install --upgrade pip
+          pip install pytest
+
+      - name: Run Schema and Integrity Pytest Suite
+        run: |
+          pytest tests/ -v
+
+      - name: Run PowerShell Script Syntax Validation
+        shell: pwsh
+        run: |
+          ./tests/Test-BridgeConfiguration.ps1

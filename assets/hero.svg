@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1120"/>
+      <stop offset="50%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="cyanTeal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="280" fill="url(#bg)"/>
+  
+  <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+    <line x1="0" y1="70" x2="1200" y2="70"/>
+    <line x1="0" y1="140" x2="1200" y2="140"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="300" y1="0" x2="300" y2="280"/>
+    <line x1="600" y1="0" x2="600" y2="280"/>
+    <line x1="900" y1="0" x2="900" y2="280"/>
+  </g>
+
+  <!-- Top Pill -->
+  <g transform="translate(60, 36)">
+    <rect width="360" height="26" rx="13" fill="rgba(6,182,212,0.12)" stroke="#06B6D4" stroke-width="1"/>
+    <circle cx="16" cy="13" r="4" fill="#10B981"/>
+    <text x="30" y="17" fill="#38BDF8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="1.2">ZERO-LATENCY NVENC SYSTEMS ENGINEERING</text>
+  </g>
+
+  <!-- Title -->
+  <text x="60" y="104" fill="#F8FAFC" font-family="-apple-system, sans-serif" font-size="34" font-weight="800" letter-spacing="-0.5">
+    Apollo <tspan fill="url(#cyanTeal)">Multi-Screen Bridge</tspan>
+  </text>
+  <text x="60" y="132" fill="#94A3B8" font-family="-apple-system, sans-serif" font-size="14" font-weight="400">
+    Deterministic 120Hz/144Hz NVENC Virtual Display Orchestration • InterfaceMetric 5 Routing • Staggered Boot
+  </text>
+
+  <!-- Flow Pills -->
+  <g transform="translate(60, 160)">
+    <rect x="0" y="0" width="220" height="52" rx="8" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="16" y="22" fill="#64748B" font-family="monospace" font-size="10" font-weight="700">HOST GPU</text>
+    <text x="16" y="40" fill="#E2E8F0" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">RTX Hardware NVENC</text>
+
+    <path d="M 232 26 L 246 26 M 241 21 L 246 26 L 241 31" stroke="#06B6D4" stroke-width="1.8" fill="none"/>
+
+    <rect x="258" y="0" width="220" height="52" rx="8" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="274" y="22" fill="#14B8A6" font-family="monospace" font-size="10" font-weight="700">PORT SPRAY</text>
+    <text x="274" y="40" fill="#E2E8F0" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">47989 / 48089 / 48189</text>
+
+    <path d="M 490 26 L 504 26 M 499 21 L 504 26 L 499 31" stroke="#06B6D4" stroke-width="1.8" fill="none"/>
+
+    <rect x="516" y="0" width="230" height="52" rx="8" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="532" y="22" fill="#38BDF8" font-family="monospace" font-size="10" font-weight="700">ROUTING ENGINE</text>
+    <text x="532" y="40" fill="#E2E8F0" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">InterfaceMetric 5 Wired</text>
+
+    <path d="M 758 26 L 772 26 M 767 21 L 772 26 L 767 31" stroke="#06B6D4" stroke-width="1.8" fill="none"/>
+
+    <rect x="784" y="0" width="230" height="52" rx="8" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    <text x="800" y="22" fill="#10B981" font-family="monospace" font-size="10" font-weight="700">VIRTUAL HEADS</text>
+    <text x="800" y="40" fill="#E2E8F0" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">SudoVDA 144Hz &amp; 5K Heads</text>
+  </g>
+
+  <!-- Bottom Badges -->
+  <g transform="translate(60, 236)">
+    <rect x="0" y="0" width="110" height="24" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="55" y="16" fill="#94A3B8" font-family="-apple-system, sans-serif" font-size="11" font-weight="500" text-anchor="middle">PowerShell 7</text>
+
+    <rect x="120" y="0" width="100" height="24" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="170" y="16" fill="#94A3B8" font-family="-apple-system, sans-serif" font-size="11" font-weight="500" text-anchor="middle">SudoVDA</text>
+
+    <rect x="230" y="0" width="110" height="24" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="285" y="16" fill="#94A3B8" font-family="-apple-system, sans-serif" font-size="11" font-weight="500" text-anchor="middle">NVENC AV1/HEVC</text>
+
+    <rect x="350" y="0" width="100" height="24" rx="4" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.1)"/>
+    <text x="400" y="16" fill="#94A3B8" font-family="-apple-system, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Moonlight</text>
+
+    <rect x="460" y="0" width="140" height="24" rx="4" fill="rgba(16,185,129,0.1)" stroke="#10B981"/>
+    <text x="530" y="16" fill="#34D399" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">0ms Jitter Overhead</text>
+  </g>
+</svg>
