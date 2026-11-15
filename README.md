@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/hero.svg" alt="Apollo Multi-Screen Bridge Banner" width="100%">
+  <img src="assets/oscilloscope_120hz_hero.svg" alt="Apollo Multi-Screen Bridge Banner" width="100%">
 </p>
 
 <p align="center">
@@ -34,6 +34,10 @@ Apollo Multi-Screen Bridge solves these issues automatically:
 ---
 
 ## 2. Systems Architecture and Network Routing
+
+<p align="center">
+  <img src="assets/nvenc_topology.svg" alt="Multi-Instance Virtual Display & NVENC Streaming Topology" width="100%">
+</p>
 
 ```mermaid
 flowchart TD
