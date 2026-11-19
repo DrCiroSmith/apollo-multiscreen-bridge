@@ -1,10 +1,19 @@
 # Local profiles (keep sample version tracked)
 config/profiles.json
 
+# Python & Virtual Environments
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
 # Logs & Temporary Files
 *.log
 .tmp/
 *.tmp
+assets/readme_rendered_*.png
 
 # Snapshots & Local Backups
 backups/

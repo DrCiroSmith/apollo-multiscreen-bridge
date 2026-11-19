@@ -7,8 +7,8 @@ Write-Host "Auditing Apollo Multi-Screen Bridge PowerShell scripts and profiles.
 
 # 1. Parse JSON configs
 $Configs = @(
-    (Join-Path $RepoRoot "config\profiles.sample.json"),
-    (Join-Path $RepoRoot "config\profiles.json")
+    (Join-Path (Join-Path $RepoRoot "config") "profiles.sample.json"),
+    (Join-Path (Join-Path $RepoRoot "config") "profiles.json")
 )
 
 foreach ($Cfg in $Configs) {
@@ -21,8 +21,8 @@ foreach ($Cfg in $Configs) {
     }
 }
 
-# 2. Syntax check PowerShell scripts via AST parser
-$PsScripts = Get-ChildItem -Path $RepoRoot -Filter "*.ps1" -Recurse
+# 2. Syntax check PowerShell scripts via AST parser (excluding .venv)
+$PsScripts = Get-ChildItem -Path $RepoRoot -Filter "*.ps1" -Recurse | Where-Object { $_.FullName -notmatch '[\\/]\.venv[\\/]' }
 foreach ($File in $PsScripts) {
     $Tokens = $null
     $Errors = $null
